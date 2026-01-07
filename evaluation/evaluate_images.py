@@ -257,10 +257,11 @@ def evaluate_image(filepath, metadata):
         })
     }
 
-
+import tqdm
 def main(args):
     full_results = []
-    for subfolder in os.listdir(args.imagedir):
+    # for subfolder in os.listdir(args.imagedir):
+    for subfolder in tqdm.tqdm(os.listdir(args.imagedir), desc="Evaluating images"):
         folderpath = os.path.join(args.imagedir, subfolder)
         if not os.path.isdir(folderpath) or not subfolder.isdigit():
             continue
